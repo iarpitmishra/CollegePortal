@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    {%include 'myapp/common/commoncss.html'%}
+</head>
+<body style="background-color: khaki;">
+    {%include 'myapp/common/commonheader.html'%}
+    <h1 style="text-align: center;">
+    FEEDBACK PAGE</h1>
+
+    {%if messages%}
+    {%for m in messages%}
+    <!-- <h2>{{m}}</h2> -->
+    <div class=" alert alert-success alert-dismissible fade show" role="alert" 0>
+        <strong>{{m}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+    {%endif%}
+
+    <form method="post" action="/feedback/" class="needs-validation" novalidate>
+        {% csrf_token %}    
+    <div class="container" style="border-style:solid;border-radius: 10px;background-color: burlywood;width: 50%;">
+        <div class="mb-3">
+            <label for="name" class="form-label">Your name</label>
+            <input type="text" name="username" placeholder="Enter your name" class="form-control" required>
+            <div class="invalid-feedback">
+                Please provide a name.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Your email</label>
+            <input type="text" name="useremail" placeholder="Enter your email" class="form-control" required>
+            <div class="invalid-feedback">
+                Please provide a email.
+            </div>
+        </div>
+        <div class ="mb-3">
+            <label for="query" class="form-label">Your Feedback</label>
+            <textarea name="userfeedback" placeholder="Enter your feedback" class="form-control" required ></textarea>
+            <div class="invalid-feedback">
+                Please provide a query.
+            </div>
+        </div>
+        <div class="mb-3">
+        <select class="form-select" aria-label="Rating" name="userrating" required="required">
+            <option selected disabled value="">Select Rating</option>
+            <option value="1">*</option>
+            <option value="2">**</option>
+            <option value="3">***</option>
+            <option value="4">****</option>
+            <option value="5">*****</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide a rating.
+        </div>
+        </div>
+        <div class="text-center mb-3">
+            <button class="btn btn-success">Sumbit</button>
+        </div>
+    </div>
+    </form>
+
+    <!-- including javascript validation code -->
+<script src="{%static 'myapp/js/validation.js'%}"></script>  
+
+        {%include 'myapp/common/commonjs.html'%}
+
+</body>
+</html>

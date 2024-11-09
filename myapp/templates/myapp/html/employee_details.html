@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    {%include 'myapp/common/commoncss.html'%}
+</head>
+<body>
+    {%include 'myapp/common/commonheader.html'%}
+    <h1 class="mt-3" style="text-align: center;color:teal;font-weight: bolder;font-family: arial;" > Employee Details </h1>
+
+<table class="table mt-3">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">Photograph</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Designation</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for e in emp_key%}
+            <tr class="table-secondary">
+                <td><img src="/media/{{e.employee_pic}}" style="width: 50%; height: 90px;" > </td>
+                <td>{{e.name}} </td>
+                <td>{{e.email}}</td>
+                <td>{{e.phone}}</td>
+                <td>{{e.designation}}</td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+    {%include 'myapp/common/commonjs.html'%}
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {%include 'myapp/common/commoncss.html'%}
+</head>
+<body>
+    {%include 'myapp/common/commonheader.html'%}
+
+    {%if messages%}
+    {%for m in messages%}
+    <!-- <h2>{{m}}</h2> -->
+    <div class=" alert alert-success alert-dismissible fade show" role="alert" 0 style="width: 50%;position: relative;margin-left: 400px;">
+        <strong>{{m}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+    {%endif%}
+
+   <div class="row mt-5">
+    <div class="col-5">
+        <img src="{%static 'myapp/images/pwq.jpg'%}" style="width: 100%;">
+    </div>
+    <div class="col-5">
+        <h2 style="text-align: center;">WELCOME TO LOGIN PAGE</h2>
+        <form method="post" action="/login/" class="needs-validation" novalidate>
+            {%csrf_token%}
+        
+            <div class="mb=3 input-group" style="margin-top: 150px;">
+                <span class="input-group-text"><i class="fas fa-user-alt "></i></span>
+             <div class="form-floating ">   
+                <input type="text" placeholder="Enter your id here" name="userid" class="form-control" required>
+                <label for="id" class="form-label"> ID</label>
+                <div class="invalid-feedback">
+                    Please provide a id.
+                </div>
+            </div>
+            </div>
+
+            <div class=" mb-5 input-group" style="margin-top: 50px;">
+                <span class="input-group-text"><i class="fas fa-key "></i></span>
+             <div class="form-floating ">  
+                <input type="password" placeholder="Enter your password here " name="userpassword" class="form-control" required>
+                <label for="password" class="form-label"> password</label>
+                <div class="invalid-feedback">
+                    Please provide a password.
+                </div> 
+            </div>
+            </div>
+            <div class="text-center mt-5">
+                <button class="btn btn-success">Sumbit</button>
+            </div>
+        </form>
+
+    </div>
+</div> 
+<script src="{%static 'myapp/js/validation.js'%}"></script>  
+    {%include 'myapp/common/commonjs.html'%}
+</body>
+</html>

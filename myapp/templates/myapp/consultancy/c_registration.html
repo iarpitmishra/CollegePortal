@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultancy registration</title>
+    {%include 'myapp/common/commoncss.html'%}
+</head>
+<body style="background-color: khaki";>
+    {%include 'myapp/common/commonheader.html'%}
+    <h1 style="text-align: center;">
+    CONSULTANCY REGISTRATION PAGE</h1>
+
+    {%if messages%}
+    {%for m in messages%}
+    <!-- <h2>{{m}}</h2> -->
+    <div class=" alert alert-success alert-dismissible fade show" role="alert" 0 style="width: 50%;position: relative;margin-left: 380px;">
+        <strong>{{m}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+    {%endif%}
+
+
+    <form method="post" action="/consultancy/" class="needs-validation" novalidate>
+        {% csrf_token %}    
+    <div class="container" style="border-style:solid;border-radius: 60px;background-color: burlywood;width: 50%;">
+        <div class="mb=3 input-group" style="margin-top: 30px;">
+            <span class="input-group-text"><i class="fas fa-user-alt "></i></span>
+            <div class="form-floating ">
+            <input type="text" name="c_id" placeholder="Enter your id" class="form-control" required>
+            <label for="id" class="form-label">ID</label>
+            <div class="invalid-feedback">
+                Please provide a id.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 input-group" style="margin-top: 40px;">
+            <span class="input-group-text"><i class="fas fa-key "></i></span>
+             <div class="form-floating ">
+            <input type="password" name="c_password" placeholder="Enter your password" class="form-control" required>
+            <label for="password" class="form-label">Your password</label>
+            <div class="invalid-feedback">
+                Please provide a password.
+            </div>
+        </div>
+        </div>
+        <div class="mb=3 input-group" style="margin-top: 30px;">
+            <span class="input-group-text"><i class="fas fa-user-alt "></i></span>
+            <div class="form-floating ">
+            <input type="text" name="c_name" placeholder="Enter your name" class="form-control" required>
+            <label for="name" class="form-label">Name</label>
+            <div class="invalid-feedback">
+                Please provide a name.
+            </div>
+        </div></div>
+        <div class="mb=3 input-group" style="margin-top: 30px;">
+            <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+            <div class="form-floating ">
+            <input type="text" name="c_phone" placeholder="Enter your phone number" class="form-control" required>
+            <label for="phone" class="form-label">Phone number</label>
+            <div class="invalid-feedback">
+                Please provide a phone.
+            </div></div>
+        </div>
+        <div class="mb=3 input-group" style="margin-top: 30px;">
+            <span class="input-group-text"><i class="fas fa-at "></i></span>
+            <div class="form-floating ">
+            <input type="text" name="c_email" placeholder="Enter your email" class="form-control" required>
+            <label for="email" class="form-label">Email</label>
+            <div class="invalid-feedback">
+                Please provide a email id.
+            </div>
+        </div></div>
+        <div class="mb=3 input-group" style="margin-top: 30px;">
+            <span class="input-group-text"><i class="far fa-comment "></i></span>
+            <div class="form-floating ">
+            <textarea name="c_description" placeholder="Enter your description" class="form-control" required ></textarea>
+            <label for="description" class="form-label">Description</label>
+            <div class="invalid-feedback">
+                Please provide a description.
+            </div>
+        </div></div>
+        <div class="text-center mb-3">
+            <button class="btn btn-success">Sumbit</button>
+        </div>
+    </div>
+    </form>
+
+    <!-- including javascript validation code -->
+    <script src="{%static 'myapp/js/validation.js'%}"></script>  
+
+    {%include 'myapp/common/commonjs.html'%}
+
+</body>
+</html>

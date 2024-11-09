@@ -1,0 +1,37 @@
+{%extends 'myapp/student/student_base.html'%}
+
+{%block title%}
+Student Home Page
+{%endblock%}
+
+{%block style%}
+p{
+    color:darkslatergray
+    
+}
+{%endblock%}
+
+{%block content%}
+
+<div style="width: 100%;height: 70px;background-color:turquoise;">
+    <h1 style="text-align: center;line-height: 90px;margin-top: 0px;">EDIT STUDENT DETAILS</h1>
+</div>
+
+<form method="POST" action="/student_edit_profile/"">
+    {%csrf_token%}
+<div class="card" style="width: 40%;height: auto;background-color: khaki;position: relative;margin-left: 450px;margin-top: 10px;">
+    <h2 style="text-align: center;color: darkslategray;">Your Profile Details</h2>
+    <img src="/media/{{student_data.student_pic}}" class="card-img-top" alt="..." style="height: 250px;width:40%;position: relative;margin-left: 185px;border: solid;border-radius: 100px;">
+<div class="card-body">
+    
+    <p class="card-text">Name : {{student_data.name}}</p>
+    <p class="card-text">Email : <input type="email" name="useremail" class="form-control" required value="{{student_data.email}}"></p>
+    <p class="card-text">Course : {{student_data.course}}</p>
+    <p class="card-text">Phone : <input type="text" name="userphone" class="form-control" required value="{{student_data.phone}}"></p>
+    <p class="card-text">Address :<textarea name="useraddress" class="form-control" required >{{student_data.address}}</textarea></p>
+    <div class="text-center"><button class="btn btn-success">Edit Profile</button>
+</div>   
+</div>
+</form>
+
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends 'myapp/student/student_base.html'%}
+
+{%block title%}
+Student Home Page
+{%endblock%}
+
+{%block style%}
+p{
+    color:darkslatergray
+    
+}
+
+{%endblock%}
+
+{%block content%}
+
+<div class="container" style="background-color:burlywood;border: solid;border-radius: 15px;width:50%;height: 300px;margin-top: 150px;">
+<h2 style="text-align: center;">FEEDBACK</h2>
+<form method="POST" action="/student_feedback/" class="needs-validation" novalidate>
+    {%csrf_token%}
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Enter Your Feedback" id="floatingTextarea" name="studentfeedback" required></textarea>
+        <label for="floatingTextarea">Feedback</label>
+        <div class="invalid-feedback">
+            Please provide a feedback.
+        </div>
+      </div>
+      <div class="mb-3 mt-5">
+        <select class="form-select" aria-label="Rating" name="studentrating" required="required">
+            <option selected disabled value="">Select Rating</option>
+            <option value="1"></option>
+            <option value="2">**</option>
+            <option value="3">***</option>
+            <option value="4">****</option>
+            <option value="5">*****</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide a name.
+        </div></div>
+    <div class="text-center"><button type="submit" class="btn btn-success">Submit</button></div>
+  </form>
+
+
+</div>
+</div>
+{%endblock%}
